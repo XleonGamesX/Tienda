@@ -11,7 +11,7 @@ backend/
 ├── .env.example          # plantilla de configuración (cópiala como .env)
 ├── src/
 │   ├── server.js         # ENTRADA: lee .env, conecta a Atlas, levanta Express
-│   ├── app.js            # Express: CORS, JSON, rutas, 404 y manejo de errores
+│   ├── app.js            # Express: CORS, JSON, rutas, frontend estático, 404 y errores
 │   ├── config/db.js      # conexión con mongoose
 │   ├── models/           # esquemas e índices únicos
 │   ├── validations/      # reglas de negocio del body (lanzan error 400)
@@ -35,6 +35,14 @@ npm install
 npm run dev               # http://localhost:3000 (con auto-reinicio)
 npm run verificar         # prueba la API de punta a punta (debe estar corriendo)
 ```
+
+Al arrancar imprime la IP de la red local, por si quieres abrir la app desde
+otro dispositivo del mismo Wi-Fi.
+
+**En producción** (`npm start`, p. ej. en Render) el servidor escucha en
+`0.0.0.0` y, además de la API, entrega el build del frontend
+(`../frontend/dist`): una sola URL para toda la app. Ver
+[`../README.md`](../README.md) → "Despliegue (Render)".
 
 ## Formato de respuestas
 

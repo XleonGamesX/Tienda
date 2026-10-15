@@ -45,7 +45,10 @@ npm run build    # genera dist/
 npm run preview  # sirve dist/ en producción
 ```
 
-La API se consume en `http://localhost:3000/api`; para apuntar a otra URL se
+La API se consume con la URL relativa `/api` (mismo origen que la página):
+en `npm run dev` y `npm run preview` Vite la proxya al backend en
+`http://localhost:3000`, y en producción la sirve Express (ver
+[`../README.md`](../README.md)). Sólo si la API viviera en otro dominio se
 crea un `.env` con `VITE_API_URL=https://tu-backend/api`.
 
 ## Arquitectura de datos
@@ -93,12 +96,11 @@ La verificación de la API vive en el backend: `cd ../backend && npm run verific
 El documento viviente con fases, decisiones y pendientes es
 [`ANALISIS_ESTRUCTURA.md`](./ANALISIS_ESTRUCTURA.md).
 
-## Despliegue (Render)
+## Despliegue
 
-Sitio estático:
-
-- **Build command:** `npm install && npm run build`
-- **Publish directory:** `dist`
+El frontend **no se despliega por separado**: en producción lo sirve el
+backend (Express entrega `dist/` y la API en la misma URL). Los pasos
+completos están en [`../README.md`](../README.md) → "Despliegue (Render)".
 
 ## Pendiente
 

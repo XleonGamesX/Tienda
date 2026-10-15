@@ -1,0 +1,15 @@
+{
+  "name": "tienda-sena-market",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TIENDA — SENA Market: frontend (Vue + Vite) y backend (Express + MongoDB Atlas) en un solo despliegue",
+  "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build && npm --prefix backend install",
+    "start": "npm --prefix backend start",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

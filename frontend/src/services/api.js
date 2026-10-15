@@ -2,14 +2,16 @@ import axios from 'axios'
 
 // ---------------------------------------------------------------------------
 // INSTANCIA AXIOS (capa única de comunicación con el backend)
-// - baseURL: VITE_API_URL si está definida, o http://localhost:3000/api
-//   (la URL del backend en desarrollo, igual que en backend/.env).
+// - baseURL: '/api' (URL RELATIVA, mismo origen que la página). Así funciona
+//   igual en desarrollo (Vite hace de proxy hacia el backend), en la red local
+//   y en producción (Express sirve el frontend y la API en la misma URL).
+//   Sólo se define VITE_API_URL si la API vive en otro dominio.
 // - interceptor de respuesta: cualquier error (400, 404, 409, backend caído...)
 //   se convierte en un Error con `message` listo para mostrar con SweetAlert2.
 //   Así los stores y las vistas no necesitan saber nada de axios.
 // ---------------------------------------------------------------------------
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
+    baseURL: import.meta.env.VITE_API_URL || '/api',
     headers: { 'Content-Type': 'application/json' }
 })
 
