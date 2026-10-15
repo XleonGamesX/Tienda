@@ -50,22 +50,23 @@ dominio se definiría `VITE_API_URL`.
 
 Todo se despliega como **un solo servicio**: Express entrega la API
 (`/api/...`) y el build del frontend (`frontend/dist`) en la misma URL, así
-que no hay CORS ni configuración extra del frontend.
+que no hay CORS ni configuración extra del frontend. El repo incluye un
+[`render.yaml`](./render.yaml) (Blueprint) con los ajustes ya definidos.
 
 1. Sube los cambios a GitHub (rama `main`).
-2. En Render: **New + → Web Service** → conecta el repositorio
-   `XleonGamesX/Tienda`.
-3. Configura:
-   - **Runtime:** Node
-   - **Root Directory:** vacío (la raíz del repo)
-   - **Build Command:** `npm run build`
-   - **Start Command:** `npm start`
-   - **Plan:** Free
-4. **Environment → Add Environment Variable:** `MONGODB_URI` con tu cadena
-   de MongoDB Atlas.
-5. **Create Web Service** y espera el primer deploy.
-6. Abre la URL asignada (`https://tu-app.onrender.com`): ya carga desde
-   cualquier red.
+2. En <https://dashboard.render.com>: **New + → Blueprint → Connect a
+   repository** → elige `XleonGamesX/Tienda`.
+3. Render lee el `render.yaml` y muestra el servicio
+   (`tienda-sena-market`, plan Free, build `npm run build`, start
+   `npm start`). Al final pega tu cadena de **`MONGODB_URI`** de MongoDB
+   Atlas y pulsa **Apply**.
+4. Espera el primer deploy y abre la URL asignada
+   (`https://tienda-sena-market.onrender.com`): ya carga desde cualquier
+   red.
+
+> **Sin Blueprint (configuración manual):** New + → Web Service → conecta el
+> repo → Root Directory vacío → Build Command `npm run build` → Start
+> Command `npm start` → Plan Free → Environment: `MONGODB_URI`.
 
 Notas importantes:
 

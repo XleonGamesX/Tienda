@@ -1,0 +1,20 @@
+# ---------------------------------------------------------------------------
+# Blueprint de Render: UN solo servicio con la API y el frontend compilado.
+#
+# Al conectar este repositorio en Render (New + → Blueprint), Render lee este
+# archivo y crea el servicio con estos ajustes; sólo pide pegar el valor de
+# MONGODB_URI. Cada push a `main` vuelve a desplegar automáticamente.
+# Pasos completos: README.md → "Despliegue (Render)".
+# ---------------------------------------------------------------------------
+services:
+  - type: web
+    name: tienda-sena-market
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /api/salud
+    envVars:
+      # Secretivo: Render lo pide al crear el servicio (no queda en el repo).
+      - key: MONGODB_URI
+        sync: false
